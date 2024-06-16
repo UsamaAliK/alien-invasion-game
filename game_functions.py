@@ -36,13 +36,15 @@ def check_events(ai_settings,screen,ship,bullets):
 
         elif event.type==pygame.KEYUP:
            check_KeyUP_events(event,ship)
-def updating_screen(ai_setting,screen,ship,bullets):
+def updating_screen(ai_setting,screen,ship,bullets,alien):
 
 
     screen.fill(ai_setting.bg_colours)
     for bullet in bullets.sprites():
         bullet.drwa_bullet()
     ship.blitme()
+    alien.blitme()
+
     pygame.display.flip()
 def update_bullets(bullets):
     bullets.update()
