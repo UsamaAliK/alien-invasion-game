@@ -17,12 +17,15 @@ class Ship():
         self.center = float(self.rect.centerx)
         self.moving_R_flag=False
         self.moving_L_flag=False
+
     def update(self):
         if self.moving_R_flag and self.rect.right < self.screen_rect.right:
             self.center+=self.ai_settings.ship_speed_factor
         if self.moving_L_flag and self.rect.left > 0 :
             self.center-=self.ai_settings.ship_speed_factor
         self.rect.centerx=self.center
+
+
     def blitme(self):
 
          #draaw the ship at its current loaction
