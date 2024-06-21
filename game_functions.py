@@ -188,7 +188,7 @@ def update_aliens(ai_settings,stats,screen,ship,aliens,bullets):
 
 
 def ship_hit(ai_settings, stats, screen, ship, aliens, bullets):
-    stats.ship_left -= 1
+    stats.ship_left -=  1
 
     aliens.empty()
     bullets.empty()
@@ -197,5 +197,7 @@ def ship_hit(ai_settings, stats, screen, ship, aliens, bullets):
     ship.center_ship()
 
     sleep(1)
+
+
 
 
