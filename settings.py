@@ -7,15 +7,15 @@ class settings():
         self.bg_colours=(230,230,230)
         # ship speed
         self.ship_speed_factor=1.5
-        self.ship_limit=3
+        self.ship_limit=2
         # Bullet settings
         self.bullet_speed_factor = 1
-        self.bullet_width = 3
+        self.bullet_width = 200
         self.bullet_height = 15
         self.bullet_color = 60, 60, 60
         self.bullets_allowed=6
         self.alien_speed_factor=1
-        self.fleet_drop_speed=50
+        self.fleet_drop_speed=100
 
         # 1 represent right and -1 represent left
         self.fleet_direction=1
