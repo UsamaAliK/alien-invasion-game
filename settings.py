@@ -8,20 +8,21 @@ class settings():
         # ship speed
         self.ship_limit=0
         # Bullet settings
-        self.bullet_width = 10
+        self.bullet_width = 1000
         self.bullet_height = 15
         self.bullet_color = 60, 60, 60
         self.bullets_allowed=6
-        self.fleet_drop_speed=10
+        self.fleet_drop_speed=150
 
 
         self.speed_scale= 1.1
+        self.score_scale= 1.5
 
         self.initialize_dynamic_setting()
 
     def initialize_dynamic_setting(self):
         self.ship_speed_factor=3
-        self.bullet_speed_factor=1
+        self.bullet_speed_factor=5
 
         self.alien_speed_factor=1
 
@@ -32,5 +33,6 @@ class settings():
         self.ship_speed_factor*=self.speed_scale
         self.bullet_speed_factor*=self.speed_scale
         self.alien_speed_factor*=self.speed_scale
+        self.alien_points=int(self.alien_points*self.score_scale)
 
 
