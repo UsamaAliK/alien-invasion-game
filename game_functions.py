@@ -85,13 +85,14 @@ def check_play_button(ai_settings,screen,stats,play_button,ship,aliens,bullets,m
 
 
 
-def updating_screen(ai_setting,screen,stats,ship,bullets,Aliens,play_button):
+def updating_screen(ai_setting,screen,stats,sb,ship,bullets,Aliens,play_button):
 
     screen.fill(ai_setting.bg_colours)
     for bullet in bullets.sprites():
         bullet.drwa_bullet()
     ship.blitme()
     Aliens.draw(screen)
+    sb.show_score()
     if not stats.game_active:
         play_button.draw_button()
 
@@ -100,19 +101,23 @@ def updating_screen(ai_setting,screen,stats,ship,bullets,Aliens,play_button):
 
 
 
-def update_bullets(ai_settings,screen,ship,aliens,bullets):
+def update_bullets(ai_settings,screen,stats,sb,ship,aliens,bullets):
     bullets.update()
     for bullet in bullets.copy():
         if bullet.rect.bottom <=0:
             bullets.remove(bullet)
-    check_bullet_alien_collision(ai_settings, screen, ship, aliens, bullets)
+    check_bullet_alien_collision(ai_settings, screen,stats,sb, ship, aliens, bullets)
 
 
 
 
 
-def check_bullet_alien_collision(ai_settings,screen,ship,aliens,bullets):
+def check_bullet_alien_collision(ai_settings,screen,stats,sb,ship,aliens,bullets):
     collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
+    if collisions:
+        for aliens in collisions.values():
+         stats.score+=ai_settings.alien_points
+         sb.prep_score()
     if len(aliens) == 0:
         bullets.empty()
         ai_settings.increase_speed()
